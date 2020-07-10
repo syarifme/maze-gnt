@@ -1,0 +1,77 @@
+1. Buatlah fungsi dengan parameter berapa banyak angka yg akan ditampilkan secara looping, dimana jika angka tersebut habis dibagi 3 cetak "fish" jika habis dibagi 5 cetak "bash" dan jika habis dibagi 15 cetak "fish bash", cetak cukup salah satu dari kondisi tersebut, cetak menggunakan console log atau sejenisnya.
+
+2. Buatlah fungsi dengan input array integer untuk mengurutkan angka dari kecil kebesar dan besar kekecil dengan manual tanpa fungsi bawaan javascript,
+
+3. Buatlah fungsi dengan input string jika string tersebut dibalik dan tetap sama dengan string yang diinputkan maka return true jika tidak return false
+
+1. 
+public static void PrintNumber(int number)
+{
+    if (number % 15 == 0)
+    {
+        Console.WriteLine("fish bash");
+    } else if (number % 5 == 0)
+    {
+        Console.WriteLine("bash");
+    } else if (number % 3 == 0)
+    {
+        Console.WriteLine("fish");
+    }
+}
+
+2. 
+public static List<int> OrderNumberAsc(int[] numbers)
+{
+    var result = new List<int>();
+    for (int i = 0; i < numbers.Length; i ++)
+    {
+        int min = int.MaxValue;
+        for (int j = i; j < numbers.Length; j++)
+        {
+            if (min > numbers[j])
+            {
+                var tmp = min;
+                min = numbers[j];
+                numbers[j] = tmp;
+            }
+        }
+
+        result.Add(min);
+    }
+    return result;
+}
+
+
+
+public static List<int> OrderNumberDesc(int[] numbers)
+{
+    var result = new List<int>();
+    for (int i = 0; i < numbers.Length; i ++)
+    {
+        int max = 0;
+        for (int j = i; j < numbers.Length; j++)
+        {
+            if (max < numbers[j])
+            {
+				var tmp = max;
+                max = numbers[j];
+				numbers[j] = tmp;
+            }
+        }
+
+        result.Add(max);
+    }
+    return result;
+}
+
+3. 
+public static bool IsSame(string words)
+{
+    var result = "";
+    var stringChars = words.ToCharArray();
+    for(int i = stringChars.Length -1; i >= 0; i--)
+    {
+        result += stringChars[i];
+    }
+    return words == result;
+}
